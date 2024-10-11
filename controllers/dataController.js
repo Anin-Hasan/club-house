@@ -21,6 +21,11 @@ const validateUser = [
   body("password")
     .isLength({ min: 6 })
     .withMessage("Minimum password Length is 6"),
+  body("ConfirmPassword")
+    .custom((value, { req }) => {
+      return value === req.body.password;
+    })
+    .withMessage("Password does not matched."),
 ];
 
 exports.signUpFormGet = (req, res) => {
