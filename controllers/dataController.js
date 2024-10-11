@@ -34,6 +34,17 @@ exports.signUpFormGet = (req, res) => {
   });
 };
 
+exports.logInGet = (req, res) => res.render("login", { user: req.user });
+
+exports.logOutGet = (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+};
+
 exports.signUpFormPost = [
   validateUser,
   async (req, res) => {
