@@ -34,7 +34,10 @@ exports.signUpFormGet = (req, res) => {
   });
 };
 
-exports.logInGet = (req, res) => res.render("login", { user: req.user });
+exports.logInGet = (req, res) => {
+  // console.log(req.user);
+  res.render("login", { user: req.user });
+};
 
 exports.logOutGet = (req, res, next) => {
   req.logout((err) => {
