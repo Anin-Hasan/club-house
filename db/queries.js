@@ -11,7 +11,7 @@ async function insertUserIntoUserDetails(email, firstname, lastname, password) {
         [email, firstname, lastname, hashedPassword, false]
       );
     } catch (error) {
-      console.log(err, error);
+      console.log(error);
     }
   });
 }
