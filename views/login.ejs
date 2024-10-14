@@ -5,7 +5,7 @@
   </head>
   <body>
     <% if (locals.user) {%>
-    <h1>WELCOME BACK <%= user.username %></h1>
+    <h1>WELCOME BACK <%= user.firstname %></h1>
     <a href="/log-out">LOG OUT</a>
     <% } else { %>
     <h1>please log in</h1>
@@ -16,9 +16,9 @@
       <input id="password" name="password" type="password" />
       <button>Log In</button>
     </form>
-    <%}%>
     <div>
       <a href="/signUp">Sign-Up</a>
     </div>
+    <%}%>
   </body>
 </html>

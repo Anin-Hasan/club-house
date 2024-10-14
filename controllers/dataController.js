@@ -52,6 +52,16 @@ exports.signUpFormPost = [
   validateUser,
   async (req, res) => {
     const errors = validationResult(req);
+    const user = await db.checkRegisteredEmail(req.body.email);
+
+    if (user) {
+      errors.errors.push({
+        msg: "Email Already exists.",
+        param: "email",
+        location: "body",
+      });
+    }
+
     if (!errors.isEmpty()) {
       return res.status(400).render("signUp", {
         title: "Create user",
