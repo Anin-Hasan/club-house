@@ -1,7 +1,6 @@
 const { Router } = require("express");
 const usersRouter = Router();
 const dataController = require("../controllers/dataController");
-const passport = require("passport");
 
 usersRouter.get("/signUp", dataController.signUpFormGet);
 usersRouter.post("/signUp", dataController.signUpFormPost);
