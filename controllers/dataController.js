@@ -95,7 +95,9 @@ exports.PostMessage = async (req, res) => {
 
 exports.getMessages = async (req, res) => {
   const messages = await db.getAllMessages();
+  const user = req.user;
   res.render("index", {
     messages: messages,
+    user: user,
   });
 };

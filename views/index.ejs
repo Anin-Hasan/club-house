@@ -59,14 +59,18 @@
   <body>
     <div class="container">
       <h1>Messages</h1>
-      <a href="/login" class="login-link">Login</a>
+      <% if (user) { %>
+      <a href="/log-out" class="login-link">Logout</a>
       <a href="/messages" class="login-link">Create New Message</a>
-      <% if (messages.length > 0) { %> <% messages.forEach((message) => { %>
+      <% } else{ %> <a href="/login" class="login-link">Login</a><% } %> <% if
+      (messages.length > 0) { %> <% messages.forEach((message) => { %>
       <div class="message">
         <h2><%= message.title %></h2>
         <p><%= message.message %></p>
+        <% if(user){ %>
         <p><strong>Author:</strong> <%= message.author %></p>
         <p><em><%= message.timestamp %></em></p>
+        <% } %>
       </div>
       <% }) %> <% } else { %>
       <p>No messages found.</p>
