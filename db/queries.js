@@ -30,7 +30,21 @@ async function insertUserIntoUserDetails(email, firstname, lastname, password) {
   });
 }
 
+async function getMembership(secretPasscode, user) {
+  if (secretPasscode === "helloWorld" && user) {
+    try {
+      await pool.query(
+        "UPDATE user_details SET membership = $1 WHERE id = $2",
+        [true, user.id]
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+
 module.exports = {
   insertUserIntoUserDetails,
   checkRegisteredEmail,
+  getMembership,
 };

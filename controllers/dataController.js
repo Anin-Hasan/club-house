@@ -74,3 +74,10 @@ exports.signUpFormPost = [
     res.redirect("/");
   },
 ];
+
+exports.getMembershipPost = async (req, res) => {
+  const secretPasscode = req.body.secretPasscode;
+  const user = req.user;
+  await db.getMembership(secretPasscode, user);
+  res.redirect("/");
+};

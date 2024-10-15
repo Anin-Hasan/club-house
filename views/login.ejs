@@ -5,7 +5,16 @@
   </head>
   <body>
     <% if (locals.user) {%>
+      <% if(user.membership == true){
+        %> <h1>Premium Member</h1><%
+      } %>
     <h1>WELCOME BACK <%= user.firstname %></h1>
+    <h2>Write a secret passcode for membership. (helloWorld)</h1>
+      <form action="/get-membership" method="POST">
+        <label for="secretPasscode">Secret Passcode  </label>
+        <input type="text" name="secretPasscode" placeholder="SecretPasscode" />
+        <button>Get Membership</button>
+      </form>
     <a href="/log-out">LOG OUT</a>
     <% } else { %>
     <h1>please log in</h1>

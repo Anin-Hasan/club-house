@@ -5,7 +5,7 @@ const dataController = require("../controllers/dataController");
 usersRouter.get("/signUp", dataController.signUpFormGet);
 usersRouter.post("/signUp", dataController.signUpFormPost);
 usersRouter.get("/log-out", dataController.logOutGet);
-// usersRouter.post("/log-in", dataController.passportAuthenticate);
 usersRouter.get("/", dataController.logInGet);
+usersRouter.post("/get-membership", dataController.getMembershipPost);
 
 module.exports = usersRouter;
