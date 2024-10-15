@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create New Message</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -16,7 +17,7 @@
       }
       .container {
         width: 80%;
-        max-width: 400px;
+        max-width: 600px;
         padding: 20px;
         background-color: #fff;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -27,10 +28,6 @@
         margin-bottom: 20px;
         color: #333;
       }
-      h2 {
-        margin-bottom: 20px;
-        color: #666;
-      }
       form {
         display: flex;
         flex-direction: column;
@@ -38,12 +35,19 @@
       label {
         margin-bottom: 5px;
         color: #333;
+        text-align: left;
       }
-      input {
+      input,
+      textarea {
         margin-bottom: 15px;
         padding: 10px;
         border: 1px solid #ddd;
         border-radius: 4px;
+        width: 100%;
+      }
+      textarea {
+        resize: vertical;
+        height: 150px;
       }
       button {
         padding: 10px;
@@ -65,39 +69,35 @@
       a:hover {
         text-decoration: underline;
       }
+      .error {
+        color: red;
+        margin-bottom: 10px;
+      }
     </style>
   </head>
   <body>
     <div class="container">
-      <% if (locals.user) { %> <% if (user.membership == true) { %>
-      <h1>Premium Member</h1>
-      <% } %>
-      <h1>WELCOME BACK <%= user.firstname %></h1>
-      <h2>Write a secret passcode for membership. (helloWorld)</h2>
-      <form action="/get-membership" method="POST">
-        <label for="secretPasscode">Secret Passcode</label>
-        <input type="text" name="secretPasscode" placeholder="SecretPasscode" />
-        <button>Get Membership</button>
-      </form>
-      <a href="/messages">Create New Message</a>
-      <a href="/">See All Messages</a>
-      <a href="/log-out">LOG OUT</a>
-      <% } else { %>
-      <h1>Please log in</h1>
-      <form action="/log-in" method="POST">
-        <label for="email">Email</label>
-        <input id="email" name="email" placeholder="Email" type="email" />
-        <label for="password">Password</label>
+      <h1>Create New Message</h1>
+      <form action="/messages" method="POST">
+        <label for="title">Title</label>
         <input
-          id="password"
-          name="password"
-          type="password"
-          placeholder="Password"
+          id="title"
+          name="title"
+          placeholder="Title"
+          type="text"
+          required
         />
-        <button>Log In</button>
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Write your message here..."
+          required
+        ></textarea>
+        <button type="submit">Submit</button>
       </form>
-      <a href="/signUp">Sign Up</a>
-      <% } %>
+      <a href="/">Back to Home</a>
+      <%- include("partials/errors.ejs") %>
     </div>
   </body>
 </html>

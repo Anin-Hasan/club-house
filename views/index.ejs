@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Messages</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 80%;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .message {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+      }
+      .message:last-child {
+        border-bottom: none;
+      }
+      .message h2 {
+        margin: 0 0 10px;
+        font-size: 1.5em;
+        color: #333;
+      }
+      .message p {
+        margin: 5px 0;
+        color: #666;
+      }
+      .message strong {
+        color: #333;
+      }
+      .message em {
+        color: #999;
+        font-size: 0.9em;
+      }
+      .login-link {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+      }
+      .login-link:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Messages</h1>
+      <a href="/login" class="login-link">Login</a>
+      <a href="/messages" class="login-link">Create New Message</a>
+      <% if (messages.length > 0) { %> <% messages.forEach((message) => { %>
+      <div class="message">
+        <h2><%= message.title %></h2>
+        <p><%= message.message %></p>
+        <p><strong>Author:</strong> <%= message.author %></p>
+        <p><em><%= message.timestamp %></em></p>
+      </div>
+      <% }) %> <% } else { %>
+      <p>No messages found.</p>
+      <% } %>
+    </div>
+  </body>
+</html>

@@ -16,7 +16,7 @@ app.use(passport.session());
 app.post(
   "/log-in",
   passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/login",
     failureRedirect: "/signUp",
   })
 );

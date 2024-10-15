@@ -2,30 +2,111 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        width: 80%;
+        max-width: 400px;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        text-align: center;
+      }
+      h1 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      label {
+        margin-bottom: 5px;
+        color: #333;
+        text-align: left;
+      }
+      input {
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      button {
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      a {
+        display: block;
+        margin-top: 15px;
+        color: #007bff;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .error {
+        color: red;
+        margin-bottom: 10px;
+      }
+    </style>
   </head>
   <body>
-    <h1>Sign Up</h1>
-    <form action="/signUp" method="POST">
-      <label for="email">Email</label>
-      <input id="email" name="email" placeholder="Email" type="email" />
-      <label for="FirstName">FirstName</label>
-      <input
-        id="FirstName"
-        name="firstname"
-        placeholder="FirstName"
-        type="text"
-      />
-      <label for="LastName">LastName</label>
-      <input id="LastName" name="lastname" placeholder="LastName" type="text" />
-
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" />
-      <label for="ConfirmPassword">ConfirmPassword</label>
-      <input id="ConfirmPassword" name="ConfirmPassword" type="password" />
-      <button>Sign Up</button>
-    </form>
-    <div><a href="/">Log In</a></div>
-    <%- include("partials/errors.ejs") %>
+    <div class="container">
+      <h1>Sign Up</h1>
+      <form action="/signUp" method="POST">
+        <label for="email">Email</label>
+        <input id="email" name="email" placeholder="Email" type="email" />
+        <label for="FirstName">First Name</label>
+        <input
+          id="FirstName"
+          name="firstname"
+          placeholder="First Name"
+          type="text"
+        />
+        <label for="LastName">Last Name</label>
+        <input
+          id="LastName"
+          name="lastname"
+          placeholder="Last Name"
+          type="text"
+        />
+        <label for="password">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="Password"
+        />
+        <label for="ConfirmPassword">Confirm Password</label>
+        <input
+          id="ConfirmPassword"
+          name="ConfirmPassword"
+          type="password"
+          placeholder="Confirm Password"
+        />
+        <button>Sign Up</button>
+      </form>
+      <div><a href="/login">Log In</a></div>
+      <%- include("partials/errors.ejs") %>
+    </div>
   </body>
 </html>

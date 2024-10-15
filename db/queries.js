@@ -43,8 +43,45 @@ async function getMembership(secretPasscode, user) {
   }
 }
 
+async function postMessage(user, title, message) {
+  if (user && title && message) {
+    const timestamp = new Date().toLocaleString("en-US", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    });
+    const author = user.firstname;
+    try {
+      await pool.query(
+        "INSERT INTO message_container(author, title, message, timestamp) VALUES ($1, $2, $3, $4)",
+        [author, title, message, timestamp]
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+
+async function getAllMessages() {
+  try {
+    const { rows } = await pool.query("SELECT * FROM message_container");
+    if (rows) {
+      return rows;
+    }
+    return null;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 module.exports = {
   insertUserIntoUserDetails,
   checkRegisteredEmail,
   getMembership,
+  postMessage,
+  getAllMessages,
 };

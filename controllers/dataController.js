@@ -81,3 +81,21 @@ exports.getMembershipPost = async (req, res) => {
   await db.getMembership(secretPasscode, user);
   res.redirect("/");
 };
+
+exports.getMessage = (req, res) => {
+  res.render("createNewMessage");
+};
+
+exports.PostMessage = async (req, res) => {
+  const { title, message } = req.body;
+  const user = req.user;
+  await db.postMessage(user, title, message);
+  res.redirect("/");
+};
+
+exports.getMessages = async (req, res) => {
+  const messages = await db.getAllMessages();
+  res.render("index", {
+    messages: messages,
+  });
+};
